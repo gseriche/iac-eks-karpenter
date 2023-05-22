@@ -102,13 +102,7 @@ module "eks" {
 
   aws_auth_roles = []
 
-  aws_auth_users = [
-    {
-      userarn  = "arn:aws:sts::626590637924:assumed-role/AWSReservedSSO_AWSAdministratorAccess_6ab06a6f4a47b0f2/gonzalo.seriche"
-      username = "gseriche"
-      groups   = ["system:masters", "eks-console-dashboard-full-access-group"]
-    }
-  ]
+  aws_auth_users = []
 
 }
 
