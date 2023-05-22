@@ -1,0 +1,27 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    - id: detect-aws-credentials
+    - id: detect-private-key
+
+-   repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.77.1
+    hooks:
+    - id: terraform_tflint
+    - id: terraform_validate
+    - id: terraform_fmt
+    - id: terraform_checkov
+      args:
+        - --args=--quiet
+        - --args=--download-external-modules terraform-aws-modules/vpc/aws:3.19.0
+        - --args=--download-external-modules terraform-aws-modules/s3-bucket/aws:~>3.0
+    - id: terraform_docs
+    - id: infracost_breakdown
+      args:
+        - --args=--path=.
+        - --args=--show-skipped
+      verbose: true
